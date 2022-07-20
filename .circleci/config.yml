@@ -45,7 +45,7 @@ jobs:
             export PATH="$PATH:/usr/local/jdk-${JAVA_VERSION}"
             export JAVA_HOME="/usr/local/jdk-${JAVA_VERSION}"
             export SONAR_SCANNER_OPTS="-Xmx2048m"
-            ls -al sonar-scanner-cli-4.7.0.2747-linux/bin/
+            ls -al sonar-scanner-4.7.0.2747-linux/bin/
       - run:
           name: Check Python version (after)
           command: python --version
