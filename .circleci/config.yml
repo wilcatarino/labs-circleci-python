@@ -19,17 +19,17 @@ jobs:
       - run:
           name: Install OpenJDK 11
           command: |
-              curl -sSL -o java.tar.gz "${JAVA_REPOSITORY}"
-              mkdir /usr/local/jdk-${JAVA_VERSION}
-              tar -xzf java.tar.gz --strip-components=1 -C /usr/local/jdk-${JAVA_VERSION}
-              rm java.tar.gz
+              sudo curl -sSL -o java.tar.gz "${JAVA_REPOSITORY}"
+              sudo mkdir /usr/local/jdk-${JAVA_VERSION}
+              sudo tar -xzf java.tar.gz --strip-components=1 -C /usr/local/jdk-${JAVA_VERSION}
+              sudo rm java.tar.gz
 
               if [[ "$JAVA_VERSION" == *"0.0"* ]]; then \
-                ln -s /usr/local/jdk-${JAVA_VERSION} /usr/local/jdk-11; \
+                sudo ln -s /usr/local/jdk-${JAVA_VERSION} /usr/local/jdk-11; \
               fi
-              ln -s /usr/local/jdk-${JAVA_VERSION}/bin/java /usr/bin/java
-              ln -s /usr/local/jdk-${JAVA_VERSION}/bin/javac /usr/bin/javac
-              ln -s /usr/local/jdk-${JAVA_VERSION}/bin/javaws /usr/bin/javaws
+              sudo ln -s /usr/local/jdk-${JAVA_VERSION}/bin/java /usr/bin/java
+              sudo ln -s /usr/local/jdk-${JAVA_VERSION}/bin/javac /usr/bin/javac
+              sudo ln -s /usr/local/jdk-${JAVA_VERSION}/bin/javaws /usr/bin/javaws
               export PATH="$PATH:/usr/local/jdk-${JAVA_VERSION}"
               export JAVA_HOME="/usr/local/jdk-${JAVA_VERSION}"
 
@@ -37,8 +37,8 @@ jobs:
       - run:
           name: Install SonarQube scanner
           command: |
-            wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
-            unzip sonar-scanner-cli-4.7.0.2747-linux.zip
+            sudo wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
+            sudo unzip sonar-scanner-cli-4.7.0.2747-linux.zip
       - run:
           name: Run SonarQube scanner
           command: |
